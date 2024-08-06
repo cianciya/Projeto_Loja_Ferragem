@@ -1,7 +1,7 @@
 <?php
 
-require_once 'config/database.php';
-require_once 'src/models/Produto.php';
+require_once '../config/database.php';
+require_once '../src/models/Produtos.php';
 
 class ProdutoController {
     private $produto_model;

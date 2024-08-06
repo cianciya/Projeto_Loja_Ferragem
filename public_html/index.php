@@ -1,7 +1,7 @@
 <?php
 
 require_once '../config/database.php';
-require_once '../src/controllers/ProdutoController.php';
+require_once '../src/controller/ProdutoController.php';
 
 // Inicializando o controlador de produtos com a conexão ao banco de dados
 $produtoController = new ProdutoController($pdo);
