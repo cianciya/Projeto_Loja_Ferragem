@@ -1,5 +1,5 @@
 # Projeto Loja de Ferragens
-
+# Entes de fazer qualquer alteração no projeto não esqueça de der um PULL para trazer todas as alterações 
 ## Estrutura do Projeto
 
 - **public_html/**: Arquivos acessíveis publicamente (HTML, CSS, JS).
