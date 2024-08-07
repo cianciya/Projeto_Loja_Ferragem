@@ -1,0 +1,411 @@
+{
+	"info": {
+		"_postman_id": "2d9ff9d4-bc04-4a98-b29e-81c97a792510",
+		"name": "Loja_ferragem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37451454"
+	},
+	"item": [
+		{
+			"name": "Produtos",
+			"item": [
+				{
+					"name": "ListarProdutos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/produtos"
+					},
+					"response": []
+				},
+				{
+					"name": "ListarProdutoId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Loja_ferragem",
+								"Projeto_Loja_Ferragem",
+								"public_html",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNovoProduto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome_produto\": \"Nome do Produto\",\r\n  \"descricao_produto\": \"Descrição do Produto\",\r\n  \"preco_produto\": 99.99,\r\n  \"quantidade_estoque\": 10,\r\n  \"id_categoria\": 1,\r\n  \"id_fornecedor\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/produtos"
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizarProduto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 21,\r\n    \"nome_produto\": \"TESTE_AUTALIZA\",\r\n    \"descricao_produto\": \"testando a rota de atualização\",\r\n    \"preco_produto\": 123.45,\r\n    \"quantidade_estoque\": 10,\r\n    \"id_categoria\": 2,\r\n    \"id_fornecedor\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/produtos"
+					},
+					"response": []
+				},
+				{
+					"name": "DeletarProduto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/produtos?id=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Loja_ferragem",
+								"Projeto_Loja_Ferragem",
+								"public_html",
+								"index.php",
+								"produtos"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fornecedor",
+			"item": [
+				{
+					"name": "ListarFornecedor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/fornecedores"
+					},
+					"response": []
+				},
+				{
+					"name": "ListarFornecedorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/fornecedores?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Loja_ferragem",
+								"Projeto_Loja_Ferragem",
+								"public_html",
+								"index.php",
+								"fornecedores"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNovoFornecedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome_fornecedor\": \"Nome do Fornecedor\",\r\n  \"endereco\": \"Endereço\",\r\n  \"telefone\": \"telefone\",\r\n  \"email\": \"email\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/fornecedores"
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizarFornecedor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 21,\r\n    \"nome_fornecedor\": \"Nome do Fornecedor\",\r\n    \"endereco\": \"Endereço\",\r\n    \"telefone\": \"telefone\",\r\n    \"email\": \"email\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/fornecedores"
+					},
+					"response": []
+				},
+				{
+					"name": "DeletarFornecedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/fornecedores?id=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Loja_ferragem",
+								"Projeto_Loja_Ferragem",
+								"public_html",
+								"index.php",
+								"fornecedores"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "ListarCategoria",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ListarCategoriaId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/categorias?id=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Loja_ferragem",
+								"Projeto_Loja_Ferragem",
+								"public_html",
+								"index.php",
+								"categorias"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome_categoria\" : \"Nome da categoria\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/categorias"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"Id da categoria\",\r\n    \"nome_cateogira\" : \"Novo nome da categoria\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/categorias"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/categorias?id=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Loja_ferragem",
+								"Projeto_Loja_Ferragem",
+								"public_html",
+								"index.php",
+								"categorias"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "ListarUsuarios",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ListarUsuarioId",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome_usuario\" : \"Nome do usuario\",\r\n    \"email_usuario\" : \"Email do usuario\",\r\n    \"senha_hash\" : \"Senha do usuario\",\r\n    \"id_tipo\" : \"Tipo de ususario\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome_usuario\" : \"Nome do usuario\",\r\n    \"email_usuario\" : \"Email do usuario\",\r\n    \"senha_hash\" : \"Senha do usuario\",\r\n    \"id_tipo\" : \"Tipo de ususario\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/Loja_ferragem/Projeto_Loja_Ferragem/public_html/index.php/usuarios?id=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Loja_ferragem",
+								"Projeto_Loja_Ferragem",
+								"public_html",
+								"index.php",
+								"usuarios"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -52,7 +52,13 @@ switch ($path) {
             case 'POST':
                 $data = getJsonData();
                 if (isset($data['nome_produto'], $data['descricao_produto'], $data['preco_produto'], $data['quantidade_estoque'], $data['id_categoria'], $data['id_fornecedor'])) {
-                    $produtoController->adicionarProduto($data['nome_produto'], $data['descricao_produto'], $data['preco_produto'], $data['quantidade_estoque'], $data['id_categoria'], $data['id_fornecedor']);
+                    $produtoController->adicionarProduto(
+                        $data['nome_produto'], 
+                        $data['descricao_produto'], 
+                        $data['preco_produto'], 
+                        $data['quantidade_estoque'], 
+                        $data['id_categoria'], 
+                        $data['id_fornecedor']);
                     sendJsonResponse(['message' => 'Produto adicionado com sucesso!']);
                 } else {
                     sendJsonResponse(['message' => 'Dados do produto incompletos']);
@@ -60,8 +66,22 @@ switch ($path) {
                 break;
             case 'PUT':
                 $data = getJsonData();
-                if (isset($data['id'], $data['nome_produto'], $data['descricao_produto'], $data['preco_produto'], $data['quantidade_estoque'], $data['id_categoria'], $data['id_fornecedor'])) {
-                    $produtoController->atualizarProduto($data['id'], $data['nome_produto'], $data['descricao_produto'], $data['preco_produto'], $data['quantidade_estoque'], $data['id_categoria'], $data['id_fornecedor']);
+                if (isset(
+                    $data['id'], 
+                    $data['nome_produto'], 
+                    $data['descricao_produto'], 
+                    $data['preco_produto'], 
+                    $data['quantidade_estoque'], 
+                    $data['id_categoria'], 
+                    $data['id_fornecedor'])) {
+                    $produtoController->atualizarProduto(
+                        $data['id'], 
+                        $data['nome_produto'], 
+                        $data['descricao_produto'], 
+                        $data['preco_produto'], 
+                        $data['quantidade_estoque'], 
+                        $data['id_categoria'], 
+                        $data['id_fornecedor']);
                     sendJsonResponse(['message' => 'Produto atualizado com sucesso!']);
                 } else {
                     sendJsonResponse(['message' => 'Dados do produto incompletos']);
@@ -94,8 +114,16 @@ switch ($path) {
                 break;
             case 'POST':
                 $data = getJsonData();
-                if (isset($data['nome_usuario'], $data['email_usuario'], $data['senha_hash'], $data['id_tipo'])) {
-                    $usuarioController->adicionarUsuario($data['nome_usuario'], $data['email_usuario'], $data['senha_hash'], $data['id_tipo']);
+                if (isset(
+                    $data['nome_usuario'], 
+                    $data['email_usuario'], 
+                    $data['senha_hash'], 
+                    $data['id_tipo'])) {
+                    $usuarioController->adicionarUsuario(
+                        $data['nome_usuario'], 
+                        $data['email_usuario'], 
+                        $data['senha_hash'], 
+                        $data['id_tipo']);
                     sendJsonResponse(['message' => 'Usuário adicionado com sucesso!']);
                 } else {
                     sendJsonResponse(['message' => 'Dados do usuário incompletos']);
@@ -103,8 +131,18 @@ switch ($path) {
                 break;
             case 'PUT':
                 $data = getJsonData();
-                if (isset($data['id'], $data['nome_usuario'], $data['email_usuario'], $data['senha_hash'], $data['id_tipo'])) {
-                    $usuarioController->atualizarUsuario($data['id'], $data['nome_usuario'], $data['email_usuario'], $data['senha_hash'], $data['id_tipo']);
+                if (isset(
+                    $data['id'], 
+                    $data['nome_usuario'], 
+                    $data['email_usuario'], 
+                    $data['senha_hash'], 
+                    $data['id_tipo'])) {
+                    $usuarioController->atualizarUsuario(
+                        $data['id'], 
+                        $data['nome_usuario'], 
+                        $data['email_usuario'], 
+                        $data['senha_hash'], 
+                        $data['id_tipo']);
                     sendJsonResponse(['message' => 'Usuário atualizado com sucesso!']);
                 } else {
                     sendJsonResponse(['message' => 'Dados do usuário incompletos']);
@@ -137,8 +175,16 @@ switch ($path) {
                 break;
             case 'POST':
                 $data = getJsonData();
-                if (isset($data['nome_fornecedor'], $data['endereco'], $data['telefone'], $data['email'])) {
-                    $fornecedorController->adicionarFornecedor($data['nome_fornecedor'], $data['endereco'], $data['telefone'], $data['email']);
+                if (isset(
+                    $data['nome_fornecedor'], 
+                    $data['endereco'], 
+                    $data['telefone'], 
+                    $data['email'])) {
+                    $fornecedorController->adicionarFornecedor(
+                        $data['nome_fornecedor'], 
+                        $data['endereco'], 
+                        $data['telefone'], 
+                        $data['email']);
                     sendJsonResponse(['message' => 'Fornecedor adicionado com sucesso!']);
                 } else {
                     sendJsonResponse(['message' => 'Dados do fornecedor incompletos']);
@@ -146,8 +192,18 @@ switch ($path) {
                 break;
             case 'PUT':
                 $data = getJsonData();
-                if (isset($data['id'], $data['nome_fornecedor'], $data['endereco'], $data['telefone'], $data['email'])) {
-                    $fornecedorController->atualizarFornecedor($data['id'], $data['nome_fornecedor'], $data['endereco'], $data['telefone'], $data['email']);
+                if (isset(
+                    $data['id'], 
+                    $data['nome_fornecedor'], 
+                    $data['endereco'], 
+                    $data['telefone'], 
+                    $data['email'])) {
+                    $fornecedorController->atualizarFornecedor(
+                        $data['id'], 
+                        $data['nome_fornecedor'], 
+                        $data['endereco'], 
+                        $data['telefone'], 
+                        $data['email']);
                     sendJsonResponse(['message' => 'Fornecedor atualizado com sucesso!']);
                 } else {
                     sendJsonResponse(['message' => 'Dados do fornecedor incompletos']);
@@ -189,8 +245,12 @@ switch ($path) {
                 break;
             case 'PUT':
                 $data = getJsonData();
-                if (isset($data['id'], $data['nome_categoria'])) {
-                    $categoriaController->atualizarCategoria($data['id'], $data['nome_categoria']);
+                if (isset(
+                    $data['id'], 
+                    $data['nome_categoria'])) {
+                    $categoriaController->atualizarCategoria(
+                        $data['id'], 
+                        $data['nome_categoria']);
                     sendJsonResponse(['message' => 'Categoria atualizada com sucesso!']);
                 } else {
                     sendJsonResponse(['message' => 'Dados da categoria incompletos']);
