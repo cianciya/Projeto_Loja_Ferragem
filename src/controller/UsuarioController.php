@@ -1,16 +1,31 @@
 <?php
 
-require_once '../config/database.php';
-require_once '../src/models/Usuarios.php';
+require_once '../../config/database.php';
+require_once '../../src/models/Usuarios.php';
 
-class UsuarioController {
+class UsuarioController
+{
     private $usuario_model;
+    private $pdo;
 
-    public function __construct($pdo) {
-        $this->usuario_model = new Usuario($pdo);
+    public function __construct()
+    {
+        $database = new Database();
+        $this->pdo = $database->getConnection();
+        $this->usuario_model = new Usuario($this->pdo);
     }
 
-    public function listarUsuarios() {
+    public function login($email, $senha)
+    {
+        try {
+            return $this->usuario_model->verificarLogin($email, $senha);
+        } catch (Exception $e) {
+            return ['message' => 'Erro ao listar usuários: ' . $e->getMessage()];
+        }
+    }
+
+    public function listarUsuarios()
+    {
         try {
             return $this->usuario_model->listarTodosUsuarios();
         } catch (Exception $e) {
@@ -18,7 +33,8 @@ class UsuarioController {
         }
     }
 
-    public function obterUsuarioPorId($usuario_id) {
+    public function obterUsuarioPorId($usuario_id)
+    {
         if (!filter_var($usuario_id, FILTER_VALIDATE_INT)) {
             return ['message' => 'ID do usuário inválido'];
         }
@@ -30,7 +46,8 @@ class UsuarioController {
         }
     }
 
-    public function adicionarUsuario($nome, $email, $senha, $tipo_id) {
+    public function adicionarUsuario($nome, $email, $senha, $tipo_id)
+    {
         if (empty($nome) || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($senha) || !filter_var($tipo_id, FILTER_VALIDATE_INT)) {
             return ['message' => 'Dados do usuário inválidos'];
         }
@@ -43,7 +60,8 @@ class UsuarioController {
         }
     }
 
-    public function atualizarUsuario($usuario_id, $nome, $email, $senha, $tipo_id) {
+    public function atualizarUsuario($usuario_id, $nome, $email, $senha, $tipo_id)
+    {
         if (!filter_var($usuario_id, FILTER_VALIDATE_INT) || empty($nome) || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($senha) || !filter_var($tipo_id, FILTER_VALIDATE_INT)) {
             return ['message' => 'Dados do usuário inválidos'];
         }
@@ -56,7 +74,8 @@ class UsuarioController {
         }
     }
 
-    public function deletarUsuario($usuario_id) {
+    public function deletarUsuario($usuario_id)
+    {
         if (!filter_var($usuario_id, FILTER_VALIDATE_INT)) {
             return ['message' => 'ID do usuário inválido'];
         }
@@ -69,4 +88,3 @@ class UsuarioController {
         }
     }
 }
-?>

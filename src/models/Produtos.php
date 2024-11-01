@@ -20,6 +20,12 @@
         return $query->fetch(PDO::FETCH_ASSOC);
         }
 
+        public function obterPorCateg($categoria_id) {
+        $query = $this->db_connection->prepare('SELECT * FROM Produtos WHERE id_categoria = ?');
+        $query->execute([$categoria_id]);
+        return $query->FetchAll(PDO::FETCH_ASSOC);
+        }
+
         // Método para adicionar um novo produto
         public function adicionar($nome, $descricao, $preco, $quantidade, $categoria_id, $fornecedor_id) {
         $query = $this->db_connection->prepare('INSERT INTO Produtos (nome_produto, descricao_produto, preco_produto, quantidade_estoque, id_categoria, id_fornecedor) VALUES (?, ?, ?, ?, ?, ?)');

@@ -21,6 +21,10 @@ class ProdutoController {
         return $this->produto_model->obterPorId($produto_id);
     }
 
+    public function obterProdutoPorCateg($categoria_id) {
+        return $this->produto_model->obterPorCateg($categoria_id);
+    }
+
     // Método para adicionar um novo produto
     public function adicionarProduto($nome, $descricao, $preco, $quantidade, $categoria_id, $fornecedor_id) {
         return $this->produto_model->adicionar($nome, $descricao, $preco, $quantidade, $categoria_id, $fornecedor_id);

@@ -6,6 +6,19 @@ class Usuario {
         $this->db_connection = $pdo;
     }
 
+    public function verificarLogin($email, $senha){
+        $senha = hash('sha256',$senha);
+        try {
+            $query = $this->db_connection->prepare('SELECT * FROM Usuarios WHERE email_usuario = ? AND senha_hash = ?');
+            $query->execute([$email, $senha]);
+            return $query->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // Trate a exceção ou registre o erro
+            echo 'Erro ao encontrar usuário ' . $e->getMessage();
+            return [];
+        }
+    }
+
     public function listarTodosUsuarios() {
         try {
             $query = $this->db_connection->query('SELECT * FROM Usuarios');
