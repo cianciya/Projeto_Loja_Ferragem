@@ -36,7 +36,6 @@ header {
 }
 .container {
     display: flex;
-    flex: 1;
     margin-top: 20px; 
     margin-bottom: 20px; 
 }
@@ -63,13 +62,15 @@ main {
 
 aside {
     position: fixed;
-    top: 35px;
     left: 0;
     width: 300px;
     height: calc(100vh); 
     color: aliceblue;
     padding: 20px;
     box-sizing: border-box;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
 }
 section {
     margin-left: 300px;  

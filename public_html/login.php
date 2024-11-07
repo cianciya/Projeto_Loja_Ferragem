@@ -1,10 +1,15 @@
 <?php
 
-require_once '../../src/controller/UsuarioController.php';
+require_once '../src/autoload.php';
+require_once '../config/Sessoes.php';
+
+$sessoes = new Sessoes();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = $_POST['email'];
     $senha = $_POST['senha'];
+
+        
 
     // Criar instância do controller
     $usuarioController = new UsuarioController();
@@ -13,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $resultado = $usuarioController->login($email, $senha);
 
     if ($resultado) {
-        header('Location: ../index.php'); // Redirecionar em caso de sucesso
+        header('Location: ../public_html/index.php'); // Redirecionar em caso de sucesso
+        $sessoes->setSession('email',$email);
     } else {
         echo 'Login falhou. Verifique suas credenciais.';
     }
@@ -31,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-image: url('../imagens/qual-kit-de-ferramentas-mais-completo.jpg');
+            background-image: url('../public_html/imagens/qual-kit-de-ferramentas-mais-completo.jpg');
             object-fit: contain;
             background-repeat: no-repeat;
             background-size: cover    

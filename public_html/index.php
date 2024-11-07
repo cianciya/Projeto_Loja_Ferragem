@@ -1,13 +1,19 @@
 <?php
-require_once '../src/controller/ProdutoController.php';
-// require_once '../src/controller/CategoriaController.php';
+require_once '../src/autoload.php';
 
-$database = new Database();
-$pdo = $database->getConnection();
-$produtos = new ProdutoController($pdo);
+$produtos = new ProdutoController();
 if (isset($_GET['categ'])) {
     $categ = $_GET['categ'];
     $produtos = $produtos->obterProdutoPorCateg($categ);
+    if (empty($produtos)) {
+        echo "<script>
+    alert('Não há items para essa categoria!!');
+    setTimeout(function() {
+        window.location.href = '../public_html/index.php';
+    }, 100); // Redireciona após 1 msegundos
+</script>";
+        exit;
+    }
 } else {
     $produtos = $produtos->listarProdutos();
 }
@@ -36,7 +42,7 @@ if (isset($_GET['categ'])) {
             </div>
         </div>
     </header>
-    <div class="container">>
+    <div class="container">
         <!--Seção do banner/carousel -->
         <!-- <section class="carousel">
             <div class="carousel-inner">
