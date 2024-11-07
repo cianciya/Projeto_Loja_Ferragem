@@ -28,7 +28,13 @@ if (isset($_GET['categ'])) {
 
 <body>
     <header class="background">
-        <p>Loja Ferragens</p>
+        <div class="menu">
+            <p>Loja Ferragens</p>
+            <div class="d-flex">
+                <p>pesquisar</p>
+                <p>carrinho</p>
+            </div>
+        </div>
     </header>
     <div class="container">>
         <!--Seção do banner/carousel -->
@@ -69,16 +75,16 @@ if (isset($_GET['categ'])) {
                 <li><a href="?categ=3"><i class="fas fa-seedling"></i> Jardinagem</a></li>
                 <li><a href="?categ=2"><i class="fas fa-building"></i> Construção</a></li>
                 <li><i class="fas fa-fire"></i> Soldagem</li>
-                <li><i class="fas fas fa-scissors"></i> Corte</li>
+                <!-- <li><i class="fas fas fa-scissors"></i> Corte</li> -->
                 <li><i class="fas fa-rotate-right"></i> Perfuração</li>
                 <li><i class="fas fa-screwdriver"></i> Fixação</li>
                 <li><i class="fas fa-ruler"></i> Medição</li>
                 <li><i class="fas fa-lightbulb"></i> Iluminação</li>
                 <li><i class="fas fa-shield-alt"></i> Segurança</li>
                 <li><i class="fas fa-broom"></i> Limpeza</li>
-                <li><i class="fas fa-boxes"></i> Organização</li>
+                <!-- <li><i class="fas fa-boxes"></i> Organização</li> -->
                 <li><i class="fas fa-truck"></i> Transporte</li>
-                <li><i class="fas fa-elevator"></i> Elevação</li>
+                <!-- <li><i class="fas fa-elevator"></i> Elevação</li> -->
                 <li><i class="fas fa-pallet"></i> Materiais</li>
             </ul>
         </aside>
