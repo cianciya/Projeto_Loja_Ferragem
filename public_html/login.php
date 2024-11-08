@@ -4,12 +4,28 @@ require_once '../src/autoload.php';
 require_once '../config/Sessoes.php';
 
 $sessoes = new Sessoes();
+if (isset($_SESSION['tipo'])) {
+    switch ($_SESSION['tipo']) {
+        case 1: // tipo adm
+            header('Location: ../public_html/admin/index.php');
+            break;
+        case 2: // tipo gerente
+            header('Location: ../public_html/gerente/index.php');
+            break;
+        case 3: // tipo cliente
+            header('Location: ../public_html/index.php');
+            break;
+        case 4: // tipo funcionário
+            header('Location: ../public_html/funcionario/index.php');
+            break;
+    }
+}
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-        
+
 
     // Criar instância do controller
     $usuarioController = new UsuarioController();
@@ -18,8 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $resultado = $usuarioController->login($email, $senha);
 
     if ($resultado) {
+        $sessoes->setSession('email', $resultado['email_usuario']);
+        $sessoes->setSession('tipo', $resultado['id_tipo']);
         header('Location: ../public_html/index.php'); // Redirecionar em caso de sucesso
-        $sessoes->setSession('email',$email);
     } else {
         echo 'Login falhou. Verifique suas credenciais.';
     }
@@ -30,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,17 +55,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-image: url('../public_html/imagens/qual-kit-de-ferramentas-mais-completo.jpg');
+            background-image: url('../public_html/assets/imagens/qual-kit-de-ferramentas-mais-completo.jpg');
             object-fit: contain;
             background-repeat: no-repeat;
-            background-size: cover    
+            background-size: cover
         }
+
         .login-container {
             margin-top: 100px;
 
         }
     </style>
 </head>
+
 <body>
     <div class="container login-container">
         <div class="row justify-content-center">
@@ -57,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         <h4>Login</h4>
                     </div>
                     <div class="card-body">
-                        <form action="#" method="post">
+                        <form method="post">
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" required>
@@ -81,4 +101,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

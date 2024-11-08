@@ -1,5 +1,13 @@
 <?php
 require_once '../src/autoload.php';
+require_once '../config/Sessoes.php';
+
+$sessoes = new Sessoes();
+
+if(isset($_GET['sair'])){
+    $sessoes->destroySession();
+    header('Location: ../public_html/index.php');
+}
 
 $produtos = new ProdutoController();
 if (isset($_GET['categ'])) {
@@ -25,9 +33,9 @@ if (isset($_GET['categ'])) {
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/event.js"></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/event.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Loja Ferragens</title>
 </head>
@@ -37,8 +45,11 @@ if (isset($_GET['categ'])) {
         <div class="menu">
             <p>Loja Ferragens</p>
             <div class="d-flex">
-                <p>pesquisar</p>
-                <p>carrinho</p>
+                <p>Pesquisar</p>
+                <p>Carrinho</p>
+                <?php if(!isset($_SESSION['tipo'])): ?><p><a href="login.php">Login</a></p><?php endif; ?>
+                <?php if(isset($_SESSION['tipo'])): ?><strong><p><?=$_SESSION['email']?></strong></p><?php endif; ?>
+                <?php if(isset($_SESSION['tipo'])): ?><p><a href="?sair">Sair</a></p> <?php endif; ?>
             </div>
         </div>
     </header>

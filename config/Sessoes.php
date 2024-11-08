@@ -13,6 +13,7 @@ class Sessoes
     // Função para armazenar dados na sessão
     public function setSession($key, $value)
     {
+        var_dump($key);
         $_SESSION[$key] = $value;
     }
 

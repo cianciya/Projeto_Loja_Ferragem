@@ -17,10 +17,6 @@ class ProdutoController
         $pdo = $database->getConnection();
         
         $this->produto_model = new Produto($pdo);
-
-        $this->sessoes = new Sessoes();
-
-        $this->sessoes->sessionExists('email');
     }
 
     // Método para listar todos os produtos
