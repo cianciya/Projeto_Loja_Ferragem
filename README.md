@@ -17,7 +17,13 @@ Para configurar o banco de dados, execute o script SQL localizado em `scripts/cr
    - Execute `scripts/create_database.sql` no seu servidor MySQL.
 
 2. **Configuração do Ambiente PHP**:
-   - Configure o arquivo `src/config/config.php` com as informações do banco de dados.
+   - Configure o arquivo `src/config/database.php` com as informações do banco de dados.
 
 3. **Executar o Projeto**:
    - Acesse o projeto no seu servidor local ou de desenvolvimento.
+
+## logins para testes
+   - **Administrador**: admin@admin.com | admin
+   - **cliente**: clientea@loja.com | clientea
+
+

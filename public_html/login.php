@@ -36,7 +36,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($resultado) {
         $sessoes->setSession('email', $resultado['email_usuario']);
         $sessoes->setSession('tipo', $resultado['id_tipo']);
-        header('Location: ../public_html/index.php'); // Redirecionar em caso de sucesso
+        switch ($_SESSION['tipo']) {
+            case 1: // tipo adm
+                header('Location: ../public_html/admin/index.php');
+                break;
+            case 2: // tipo gerente
+                header('Location: ../public_html/gerente/index.php');
+                break;
+            case 3: // tipo cliente
+                header('Location: ../public_html/index.php');
+                break;
+            case 4: // tipo funcionário
+                header('Location: ../public_html/funcionario/index.php');
+                break;
+        }
     } else {
         echo 'Login falhou. Verifique suas credenciais.';
     }
