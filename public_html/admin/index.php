@@ -1,9 +1,9 @@
-<?php 
+<?php
 require_once '../../config/bootstrap.php';
 require_once '../../config/Sessoes.php';
 
 $sessoes = new Sessoes();
-if(!isset($_SESSION['tipo']) || $_SESSION['tipo']  != 1){
+if (!isset($_SESSION['tipo']) || $_SESSION['tipo']  != 1) {
     header('Location: ../index.php');
 }
 ?>
@@ -14,32 +14,27 @@ if(!isset($_SESSION['tipo']) || $_SESSION['tipo']  != 1){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
     <title>Administrador</title>
 </head>
 
 <body>
     <div class="fixed-top d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100" style="width: 280px;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-                <use xlink:href="#bootstrap"></use>
-            </svg>
+            <i class="fa-solid fa-user-tie fa-xl mx-2"></i>
             <span class="fs-4">Loja de Ferragens</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a href="?page=home" class="nav-link text-white <?php echo ($_GET['page'] ?? 'home') == 'home' ? 'active' : ''; ?>" aria-current="page">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#home"></use>
-                    </svg>
+                    <i class="fa-solid fa-house mx-2"></i>
                     Home
                 </a>
             </li>
             <li>
                 <a href="?page=usuarios" class="nav-link text-white <?php echo ($_GET['page'] ?? 'home') == 'usuarios' ? 'active' : ''; ?>">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#speedometer2"></use>
-                    </svg>
+                    <i class="fa-solid fa-user mx-2"></i>
                     Usuários
                 </a>
             </li>
@@ -52,10 +47,8 @@ if(!isset($_SESSION['tipo']) || $_SESSION['tipo']  != 1){
                 </a>
             </li> -->
             <li>
-                <a href="?page=produtos" class="nav-link text-white <?php echo ($_GET['page'] ?? 'home') == 'produtos' ? 'active' : ''; ?>">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#grid"></use>
-                    </svg>
+                <a href="?page=produtos" class="nav-link text-white <?php echo (($_GET['page'] ?? 'home') == 'produtos' || ($_GET['page'] ?? 'home') == 'produtos-cad' || ($_GET['page'] ?? 'home') == 'produtos-editar') ? 'active' : ''; ?>">
+                    <i class="fa-solid fa-screwdriver-wrench mx-2"></i>
                     Produtos
                 </a>
             </li>
@@ -88,10 +81,10 @@ if(!isset($_SESSION['tipo']) || $_SESSION['tipo']  != 1){
 
     <div class="container">
         <?php
-        $page = $_GET['page'] ?? 'home'; 
+        $page = $_GET['page'] ?? 'home';
 
         // Verifique se o arquivo existe e inclua o conteúdo correspondente
-        $allowedPages = ['home', 'usuarios', 'produtos'];
+        $allowedPages = ['home', 'usuarios', 'produtos', 'produtos-editar','produtos-cad'];
         if (in_array($page, $allowedPages)) {
             include "$page.php";  // Inclui o arquivo com o conteúdo da página
         } else {

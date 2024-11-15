@@ -1,0 +1,34 @@
+
+
+.h1-sidebar::after {
+    content: '';
+    background-color: orange;
+    display: block;
+    width: 15%;
+    height: 0.3rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 10px;
+    margin: 0 5px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+}
