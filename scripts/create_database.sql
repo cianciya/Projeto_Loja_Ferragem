@@ -30,7 +30,7 @@ CREATE TABLE Usuarios (
 
 -- Inserção de Usuários
 INSERT INTO Usuarios (nome_usuario, email_usuario, senha_hash, id_tipo) VALUES
-('Administrador', 'admin@loja.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1),
+('Administrador', 'admin@admin.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1),
 ('Gerente', 'gerente@loja.com', 'hash_da_senha_gerente', 2),
 ('Cliente A', 'clientea@loja.com', 'ce5017573722eb4607f7b24ada47c006945a07109e15a161cf352f286f539c52', 3),
 ('Cliente B', 'clienteb@loja.com', 'hash_da_senha_cliente', 3),
