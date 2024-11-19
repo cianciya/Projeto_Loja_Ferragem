@@ -2,6 +2,7 @@
 
 require_once '../src/autoload.php';
 require_once '../config/Sessoes.php';
+require_once '../config/bootstrap.php';
 
 $sessoes = new Sessoes();
 if (isset($_SESSION['tipo'])) {
@@ -21,6 +22,8 @@ if (isset($_SESSION['tipo'])) {
     }
 }
 
+$toastHtml = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -36,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($resultado) {
         $sessoes->setSession('email', $resultado['email_usuario']);
         $sessoes->setSession('tipo', $resultado['id_tipo']);
+        echo '<div class="alert alert-success" role="alert">Login bem-sucedido!</div>';
         switch ($_SESSION['tipo']) {
             case 1: // tipo adm
                 header('Location: ../public_html/admin/index.php');
@@ -51,7 +55,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 break;
         }
     } else {
-        echo 'Login falhou. Verifique suas credenciais.';
+        $toastHtml = '<div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div class="toast align-items-center text-bg-danger border-0 show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+              <div class="d-flex">
+                <div class="toast-body">
+                  Senha incorreta. Tente novamente!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>';
     }
 }
 
@@ -65,54 +78,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             background-image: url('../public_html/assets/imagens/qual-kit-de-ferramentas-mais-completo.jpg');
             object-fit: contain;
             background-repeat: no-repeat;
-            background-size: cover
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .login-container {
-            margin-top: 100px;
-
-        }
     </style>
 </head>
 
 <body>
-    <div class="container login-container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h4>Login</h4>
-                    </div>
-                    <div class="card-body">
-                        <form method="post">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="senha">Senha</label>
-                                <input type="password" class="form-control" id="senha" name="senha" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-                        </form>
-                    </div>
-                    <div class="card-footer text-center">
-                        <small><a href="#">Esqueceu a senha?</a></small>
-                    </div>
+<div class="container login-container">
+    <div class="d-flex row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="mb-0">Login</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha" name="senha" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <small><a href="#">Esqueceu a senha?</a></small>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+    <?=  $toastHtml ?>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
