@@ -1,12 +1,13 @@
 <?php
 require_once '../../src/autoload.php';
+require_once '../../config/bootstrap.php';
 $produtos = new ProdutoController();
 
 /**** Exclusao do cliente ****/ 
 if(isset($_GET['ex'])){
     $produtos->deletarProduto(intval($_GET['ex']));
-    echo "<script>alert('Produto excluido com sucesso');</script>";
-    header("location: ?page=produtos&pagina=" . isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1);
+    header("location: ?page=produtos&pagina=1");
+    exit;
 }
 /*****************************/
 
@@ -64,7 +65,7 @@ $produtos_pagina = array_slice($produtos, $inicio, $itens_por_pagina);
                         <td><?= $produto['quantidade_estoque'] ?></td>
                         <td>
                             <!-- Botões de Ação -->
-                            <a href="?page=produtos-editar" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="?page=produtos-editar&idprod=<?=$produto['id_produto']?>" class="btn btn-warning btn-sm">Editar</a>
                             <a onclick="return confirm('Deseja mesmo excluir o cliente?');" href="?page=produtos&pagina=<?=$pagina_atual?>&ex=<?=$produto['id_produto']?>" class="btn btn-danger btn-sm">Excluir</a>
                         </td>
                     </tr>

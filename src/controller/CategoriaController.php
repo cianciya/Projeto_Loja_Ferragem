@@ -1,12 +1,17 @@
 <?php
 
-require_once '../config/database.php';
-require_once '../src/models/Categorias.php';
+require_once  __DIR__ . '/../../config/database.php';
+require_once  __DIR__ . '/../../config/Sessoes.php';
+require_once  __DIR__ . '/../../src/models/Categorias.php';
 
 class CategoriaController {
     private $categoria_model;
 
-    public function __construct($pdo) {
+    public function __construct() {
+        $database = new Database();
+
+        $pdo = $database->getConnection();
+
         $this->categoria_model = new Categoria($pdo);
     }
 

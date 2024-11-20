@@ -1,12 +1,17 @@
 <?php
 
-require_once '../config/database.php';
-require_once '../src/models/Fornecedores.php';
+require_once  __DIR__ . '/../../config/database.php';
+require_once  __DIR__ . '/../../config/Sessoes.php';
+require_once  __DIR__ . '/../../src/models/Fornecedores.php';
 
 class FornecedorController {
     private $fornecedor_model;
 
-    public function __construct($pdo) {
+    public function __construct() {
+        $database = new Database();
+
+        $pdo = $database->getConnection();
+
         $this->fornecedor_model = new Fornecedor($pdo);
     }
 
