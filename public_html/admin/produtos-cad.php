@@ -1,14 +1,12 @@
 <?php
-require_once '../config/database.php';
-require_once '../src/model/Produto.php';
-require_once '../src/controller/ProdutoController.php';
+require_once '../../config/bootstrap.php';
+require_once '../../src/autoload.php';
 
-// Criação da conexão com o banco de dados
-$database = new Database();
-$pdo = $database->getConnection();
 
 // Instanciando o controlador
-$produtoController = new ProdutoController($pdo);
+$produtoController = new ProdutoController();
+$categoria = new CategoriaController();
+$fornecedores = new FornecedorController();
 
 // Variáveis de erro
 $erro = '';
@@ -38,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Carregar categorias e fornecedores para os campos do formulário
-$categorias = $produtoController->listarCategorias(); // método para listar as categorias
-$fornecedores = $produtoController->listarFornecedores(); // método para listar fornecedores
+$categorias = $categoria->listarCategorias(); // método para listar as categorias
+$fornecedores = $fornecedores->listarFornecedores(); // método para listar fornecedores
 
 ?>
 <!DOCTYPE html>
@@ -111,6 +109,6 @@ $fornecedores = $produtoController->listarFornecedores(); // método para listar
         </div>
     </form>
 
-    <a href="produtos.php">Voltar para a lista de produtos</a>
+    <a href="index.php?page=produtos">Voltar para a lista de produtos</a>
 </body>
 </html>

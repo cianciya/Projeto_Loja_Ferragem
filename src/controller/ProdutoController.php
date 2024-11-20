@@ -55,16 +55,16 @@ class ProdutoController
     }
 
     // Método para listar categorias
-    public function listarCategorias() {
-        $stmt = $this->pdo->prepare("SELECT * FROM categorias");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    // public function listarCategorias() {
+    //     $stmt = $this->pdo->prepare("SELECT * FROM categorias");
+    //     $stmt->execute();
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
 
-    // Método para listar fornecedores
-    public function listarFornecedores() {
-        $stmt = $this->pdo->prepare("SELECT * FROM fornecedores");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    // // Método para listar fornecedores
+    // public function listarFornecedores() {
+    //     $stmt = $this->pdo->prepare("SELECT * FROM fornecedores");
+    //     $stmt->execute();
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
 }
