@@ -41,74 +41,111 @@ $fornecedores = $fornecedores->listarFornecedores(); // método para listar forn
 
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Produto</title>
+    <title>Cadastrar Novo Produto</title>
 </head>
 <body>
-    <h1>Cadastrar Novo Produto</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Cadastrar Novo Produto</h1>
 
     <!-- Exibir mensagens de erro ou sucesso -->
     <?php if ($erro): ?>
-        <p style="color: red;"><?= $erro; ?></p>
+        <div class="alert alert-danger"><?= $erro; ?></div>
     <?php endif; ?>
     <?php if ($sucesso): ?>
-        <p style="color: green;"><?= $sucesso; ?></p>
+        <div class="alert alert-success"><?= $sucesso; ?></div>
     <?php endif; ?>
 
     <!-- Formulário de Cadastro de Produto -->
-    <form action="produtos-cad.php" method="POST">
-        <div>
-            <label for="nome_produto">Nome do Produto:</label>
-            <input type="text" id="nome_produto" name="nome_produto" required value="<?= $nome_produto ?? ''; ?>">
+    <form action="#" method="POST">
+        <div class="mb-3">
+            <label for="nome_produto" class="form-label">Nome do Produto:</label>
+            <input 
+                type="text" 
+                id="nome_produto" 
+                name="nome_produto" 
+                class="form-control" 
+                required 
+                value="<?= $nome_produto ?? ''; ?>">
         </div>
 
-        <div>
-            <label for="descricao_produto">Descrição do Produto:</label>
-            <textarea id="descricao_produto" name="descricao_produto" required><?= $descricao_produto ?? ''; ?></textarea>
+        <div class="mb-3">
+            <label for="descricao_produto" class="form-label">Descrição do Produto:</label>
+            <textarea 
+                id="descricao_produto" 
+                name="descricao_produto" 
+                class="form-control" 
+                rows="4" 
+                required><?= $descricao_produto ?? ''; ?></textarea>
         </div>
 
-        <div>
-            <label for="preco_produto">Preço:</label>
-            <input type="number" id="preco_produto" name="preco_produto" required step="0.01" value="<?= $preco_produto ?? ''; ?>">
+        <div class="mb-3">
+            <label for="preco_produto" class="form-label">Preço:</label>
+            <input 
+                type="number" 
+                id="preco_produto" 
+                name="preco_produto" 
+                class="form-control" 
+                required 
+                step="0.01" 
+                value="<?= $preco_produto ?? ''; ?>">
         </div>
 
-        <div>
-            <label for="quantidade_estoque">Quantidade em Estoque:</label>
-            <input type="number" id="quantidade_estoque" name="quantidade_estoque" required value="<?= $quantidade_estoque ?? ''; ?>">
+        <div class="mb-3">
+            <label for="quantidade_estoque" class="form-label">Quantidade em Estoque:</label>
+            <input 
+                type="number" 
+                id="quantidade_estoque" 
+                name="quantidade_estoque" 
+                class="form-control" 
+                required 
+                value="<?= $quantidade_estoque ?? ''; ?>">
         </div>
 
-        <div>
-            <label for="id_categoria">Categoria:</label>
-            <select id="id_categoria" name="id_categoria" required>
+        <div class="mb-3">
+            <label for="id_categoria" class="form-label">Categoria:</label>
+            <select 
+                id="id_categoria" 
+                name="id_categoria" 
+                class="form-select" 
+                required>
                 <option value="">Selecione</option>
                 <?php foreach ($categorias as $categoria): ?>
-                    <option value="<?= $categoria['id']; ?>" <?= isset($id_categoria) && $id_categoria == $categoria['id'] ? 'selected' : ''; ?>>
+                    <option value="<?= $categoria['id_categoria']; ?>" 
+                        <?= isset($id_categoria) && $id_categoria == $categoria['id_categoria'] ? 'selected' : ''; ?>>
                         <?= $categoria['nome_categoria']; ?>
                     </option>
                 <?php endforeach; ?>
             </select>
         </div>
 
-        <div>
-            <label for="id_fornecedor">Fornecedor:</label>
-            <select id="id_fornecedor" name="id_fornecedor" required>
+        <div class="mb-3">
+            <label for="id_fornecedor" class="form-label">Fornecedor:</label>
+            <select 
+                id="id_fornecedor" 
+                name="id_fornecedor" 
+                class="form-select" 
+                required>
                 <option value="">Selecione</option>
                 <?php foreach ($fornecedores as $fornecedor): ?>
-                    <option value="<?= $fornecedor['id']; ?>" <?= isset($id_fornecedor) && $id_fornecedor == $fornecedor['id'] ? 'selected' : ''; ?>>
+                    <option value="<?= $fornecedor['id_fornecedor']; ?>" 
+                        <?= isset($id_fornecedor) && $id_fornecedor == $fornecedor['id_fornecedor'] ? 'selected' : ''; ?>>
                         <?= $fornecedor['nome_fornecedor']; ?>
                     </option>
                 <?php endforeach; ?>
             </select>
         </div>
 
-        <div>
-            <button type="submit">Cadastrar Produto</button>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary w-100">Cadastrar Produto</button>
         </div>
     </form>
 
-    <a href="index.php?page=produtos">Voltar para a lista de produtos</a>
+    <a href="index.php?page=produtos" class="btn btn-secondary mt-3">Voltar para a lista de produtos</a>
+</div>
+
 </body>
 </html>
