@@ -1,5 +1,5 @@
 Visão Geral do Sistema
-Sistema financeiro integrado para gestão de produtos, usuários, categorias e fornecedores.
+Sistema integrado para gestão de produtos, usuários, categorias e fornecedores.
 Comunicação com banco de dados MySQL via PDO.
 APIs RESTful para comunicação com aplicações externas.
 
