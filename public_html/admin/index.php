@@ -78,7 +78,7 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] != 1) {
         $page = $_GET['page'] ?? 'home';
 
         // Verifique se o arquivo existe e inclua o conteúdo correspondente
-        $allowedPages = ['home', 'usuarios', 'produtos', 'produtos-editar', 'produtos-cad'];
+        $allowedPages = ['home', 'usuarios', 'produtos', 'produtos-editar', 'produtos-cad','usuarios-cad','usuarios-editar'];
         if (in_array($page, $allowedPages)) {
             include "$page.php";  // Inclui o arquivo com o conteúdo da página
         } else {

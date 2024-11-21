@@ -1,7 +1,8 @@
 <?php
 
-require_once '../config/database.php';
-require_once '../src/models/Usuarios.php';
+require_once  __DIR__ . '/../../config/database.php';
+require_once  __DIR__ . '/../../config/Sessoes.php';
+require_once  __DIR__ . '/../../src/models/Usuarios.php';
 
 class UsuarioController
 {
