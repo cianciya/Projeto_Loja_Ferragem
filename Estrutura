@@ -1,0 +1,24 @@
+Visão Geral do Sistema
+Sistema financeiro integrado para gestão de produtos, usuários, categorias e fornecedores.
+Comunicação com banco de dados MySQL via PDO.
+APIs RESTful para comunicação com aplicações externas.
+
+Arquitetura Utilizada
+1. MVC (Model-View-Controller)
+Model: Gerencia as interações com o banco de dados e contém as regras de negócios.
+Controller: Processa as requisições e realiza a ponte entre o cliente (API) e os dados.
+View: Representada pelas respostas da API, geralmente em formato JSON.
+
+2. API RESTful
+Recursos acessados por meio de rotas definidas (produtos, usuários, etc.).
+Métodos HTTP:
+GET: Recuperação de dados.
+POST: Criação de novos registros.
+PUT: Atualização de dados existentes.
+DELETE: Exclusão de registros.
+
+
+
+
+PDO (PHP Data Objects) é uma extensão do PHP que fornece uma interface leve e consistente para acessar bancos de dados. 
+Ele é amplamente utilizado para interagir com diferentes sistemas de gerenciamento de banco de dados (DBMS), como MySQL, PostgreSQL, SQLite, entre outros
