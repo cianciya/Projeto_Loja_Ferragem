@@ -43,7 +43,7 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] != 1) {
                     </a>
                 </li>
                 <li>
-                    <a href="?page=usuarios" class="nav-link text-white <?php echo ($_GET['page'] ?? 'home') == 'usuarios' ? 'active' : ''; ?>">
+                    <a href="?page=usuarios" class="nav-link text-white <?php echo (($_GET['page'] ?? 'home') == 'usuarios' || ($_GET['page'] ?? 'home') == 'usuarios-cad' || ($_GET['page'] ?? 'home') == 'usuarios-editar') ? 'active' : ''; ?>">
                         <i class="fa-solid fa-user mx-2"></i> Usuários
                     </a>
                 </li>
